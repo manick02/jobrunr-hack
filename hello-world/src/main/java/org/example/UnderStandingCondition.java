@@ -6,31 +6,30 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class UnderStandingCondition {
-    static   BoundedCounter boundedCounter = new BoundedCounter(2);
+    static BoundedCounter boundedCounter = new BoundedCounter(5);
 
     public static void main(String[] args) throws InterruptedException {
-        boundedCounter = new BoundedCounter(1);
         CountDownLatch latch = new CountDownLatch(2);
-        Thread incrementThread = Thread.ofPlatform().start(()->{
+        Thread incrementThread = Thread.ofVirtual().start(() -> {
             int inc = 0;
-            while (inc <  11) {
+            while (inc < 11) {
                 boundedCounter.increment();
-                boundedCounter.decrement();
                 inc++;
             }
             latch.countDown();
         });
-        Thread decrementThread = Thread.ofPlatform().start(() -> {
+    //    boundedCounter.decrement();
+
+        Thread decrementThread = Thread.ofVirtual().start(() -> {
             int dec = 0;
             while( dec < 11 ) {
-                boundedCounter.decrement();
                 boundedCounter.decrement();
                 dec++;
             }
             latch.countDown();
         });
 
-        //boundedCounter.increment(); // simulating wait..lets see what happens
+        // boundedCounter.increment(); // simulating wait..lets see what happens
         latch.await();
     }
 
@@ -49,10 +48,11 @@ public class UnderStandingCondition {
             this.notUpperBound = this.lock.newCondition();
             this.notLowerBound = this.lock.newCondition();
         }
+
         public void increment() {
             lock.lock();
             try {
-                while(this.count==this.bound) {
+                while (this.count == this.bound) {
                     System.out.println("Await -- increment");
                     notUpperBound.await();
                     System.out.println("Woken up -- increment");
@@ -70,18 +70,17 @@ public class UnderStandingCondition {
         public void decrement() {
             lock.lock();
             try {
-                while(this.count==0) {
+                while (this.count == 0) {
                     System.out.println("Await -- decrement");
                     notLowerBound.await();
                     System.out.println("Woken Up -- decrement");
                 }
                 this.count--;
                 System.out.println(this.count);
-                this.notUpperBound.await();
+                this.notUpperBound.signal();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
-            }
-            finally {
+            } finally {
                 lock.unlock();
             }
         }
