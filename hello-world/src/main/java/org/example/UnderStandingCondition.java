@@ -10,9 +10,10 @@ public class UnderStandingCondition {
 
     public static void main(String[] args) throws InterruptedException {
         CountDownLatch latch = new CountDownLatch(2);
+        int simulateFor = 1000;
         Thread incrementThread = Thread.ofVirtual().start(() -> {
             int inc = 0;
-            while (inc < 11) {
+            while (inc < simulateFor) {
                 boundedCounter.increment();
                 inc++;
             }
@@ -22,7 +23,7 @@ public class UnderStandingCondition {
 
         Thread decrementThread = Thread.ofVirtual().start(() -> {
             int dec = 0;
-            while( dec < 11 ) {
+            while( dec < simulateFor) {
                 boundedCounter.decrement();
                 dec++;
             }
