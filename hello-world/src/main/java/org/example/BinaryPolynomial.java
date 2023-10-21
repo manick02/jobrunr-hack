@@ -1,0 +1,32 @@
+package org.example;
+
+/**
+ * Understanding by implementing binary polynomial division which is used in CheckSum
+ * Referred - https://www.geeksforgeeks.org/modulo-2-binary-division/ to understand binary polynomial division
+ */
+public class BinaryPolynomial {
+
+    public static void main(String[] args) {
+        System.out.println( extractLSB(100));
+        System.out.println( extractLSB(131));
+        System.out.println(extractLastNBit(100,2));
+        System.out.println(Integer.toBinaryString(extractLastNBit(0xFF,3)));
+    }
+
+    public static void multiply(int a, int b ) {
+
+    }
+
+
+    public static int extractLSB(int b) {
+        return b & 0x1;
+    }
+
+    public static int extractLastNBit(int b, int N) {
+
+        return (b & ((1 << N) - 1));
+    }
+
+
+
+}
