@@ -3,6 +3,7 @@ package org.example;
 /**
  * Understanding by implementing binary polynomial division which is used in CheckSum
  * Referred - https://www.geeksforgeeks.org/modulo-2-binary-division/ to understand binary polynomial division
+ * Reference - https://www.amazon.in/Hackers-Delight-Henry-Warren-Jr/dp/0201914654
  */
 public class BinaryPolynomial {
 
