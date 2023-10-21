@@ -11,6 +11,7 @@ public class BinaryPolynomial {
         System.out.println( extractLSB(131));
         System.out.println(extractLastNBit(100,2));
         System.out.println(Integer.toBinaryString(extractLastNBit(0xFF,3)));
+        System.out.println(Integer.toBinaryString(extractNthBit(0xFF,3)));
     }
 
     public static void multiply(int a, int b ) {
@@ -25,6 +26,10 @@ public class BinaryPolynomial {
     public static int extractLastNBit(int b, int N) {
 
         return (b & ((1 << N) - 1));
+    }
+
+    public static int extractNthBit(int b, int N) {
+        return (b & ((0x1) << (N-1)))>>(N-1);
     }
 
 
