@@ -53,6 +53,10 @@ public class MyStorage extends OutputStream {
         try (MyStorage myStorage = new MyStorage(new FileOutputStream("test.01"))) {
             myStorage.write("Hello World".getBytes());
         }
+
+        try (BufferedOutputStream myStorage = new BufferedOutputStream(new FileOutputStream("test.02"))) {
+            myStorage.write("Hello word using default implementation".getBytes());
+        }
     }
 
 }
