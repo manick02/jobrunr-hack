@@ -14,7 +14,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
+        <ratis.version>2.5.2-0f5f95d-SNAPSHOT</ratis.version>
+        <commons-cli.version>1.6.0</commons-cli.version>
     </properties>
+
 
     <dependencies>
         <dependency>
@@ -27,5 +30,72 @@
             <artifactId>gson</artifactId>
             <version>2.10.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.ratis</groupId>
+            <artifactId>ratis-server</artifactId>
+            <version>${ratis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ratis</groupId>
+            <artifactId>ratis-server-api</artifactId>
+            <version>${ratis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ratis</groupId>
+            <artifactId>ratis-common</artifactId>
+            <version>${ratis.version}</version>
+
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ratis</groupId>
+            <artifactId>ratis-client</artifactId>
+            <version>${ratis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ratis</groupId>
+            <artifactId>ratis-grpc</artifactId>
+            <version>${ratis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ratis</groupId>
+            <artifactId>ratis-proto</artifactId>
+            <version>${ratis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ratis</groupId>
+            <artifactId>ratis-metrics</artifactId>
+            <version>${ratis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-cli</groupId>
+            <artifactId>commons-cli</artifactId>
+            <version>${commons-cli.version}</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.ratis</groupId>-->
+<!--            <artifactId>ratis-thirdparty-misc</artifactId>-->
+<!--            <version>2.4.1</version>-->
+<!--        </dependency>  <dependency>-->
+<!--            <groupId>org.apache.ratis</groupId>-->
+<!--            <artifactId>ratis-thirdparty-misc</artifactId>-->
+<!--            <version>2.4.1</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.ratis</groupId>-->
+<!--            <artifactId>ratis</artifactId>-->
+<!--            <version>2.4.1</version>-->
+<!--            <type>pom</type>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>org.apache.ratis</groupId>-->
+<!--            <artifactId>ratis</artifactId>-->
+<!--            <version>2.4.1</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <artifactId>ratis-grpc</artifactId>-->
+<!--            <groupId>org.apache.ratis</groupId>-->
+<!--            <version>2.4.1</version>-->
+<!--        </dependency>-->
     </dependencies>
 </project>
