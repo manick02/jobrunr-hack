@@ -11,5 +11,7 @@
     <orderEntry type="library" name="Maven: org.apache.ratis:ratis-server-api:2.5.2-0f5f95d-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.apache.ratis:ratis-server:2.5.2-0f5f95d-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: commons-cli:commons-cli:1.6.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.ratis:ratis-common:2.5.2-0f5f95d-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.ratis:ratis-thirdparty-misc:1.0.4" level="project" />
   </component>
 </module>
