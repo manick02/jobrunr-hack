@@ -16,6 +16,7 @@
         <maven.compiler.target>21</maven.compiler.target>
         <ratis.version>2.5.2-0f5f95d-SNAPSHOT</ratis.version>
         <commons-cli.version>1.6.0</commons-cli.version>
+        <slf4j-log4j12.version>1.7.26</slf4j-log4j12.version>
     </properties>
 
 
@@ -29,6 +30,11 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.10.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j-log4j12.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.ratis</groupId>
