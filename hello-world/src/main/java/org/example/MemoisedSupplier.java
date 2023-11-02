@@ -16,7 +16,9 @@ public class MemoisedSupplier<T> implements Supplier<T> {
        if (oldValue == null) {
           synchronized (this) {
               T t = wrapped.get();
-              reference.compareAndSet(null, t);
+              if (reference.compareAndSet(null, t)){
+               System.out.println("if this line is printed more than once then race condition is not handled");
+              }
           }
        }
        return reference.get();
