@@ -11,11 +11,13 @@ public class MemoisedSupplier<T> implements Supplier<T> {
         this.reference = new AtomicReference<T>();
     }
     @Override
-    public synchronized T get() {
+    public  T get() {
         T oldValue = reference.get();
-       if (reference.get()==null) {
-           T t = wrapped.get();
-           reference.set(t);
+       if (oldValue == null) {
+          synchronized (this) {
+              T t = wrapped.get();
+              reference.compareAndSet(null, t);
+          }
        }
        return reference.get();
     }
