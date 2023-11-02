@@ -1,4 +1,4 @@
-package org.pattern.org.pattern.wal;
+package org.example.pattern.wal;
 
 import java.util.Arrays;
 import java.util.zip.CRC32;

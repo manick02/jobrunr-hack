@@ -1,4 +1,4 @@
-package org.command;
+package org.example.command;
 
 
 import org.apache.commons.cli.*;
