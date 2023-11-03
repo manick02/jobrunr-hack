@@ -3,7 +3,7 @@ package org.example.tdd.kentbeck;
 import java.util.Objects;
 
 public class Dollar extends Money {
-    public Dollar(int moneyValue) {
+    protected Dollar(int moneyValue) {
       super(moneyValue);
     }
 

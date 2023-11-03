@@ -1,7 +1,7 @@
 package org.example.tdd.kentbeck;
 
 public class Franc extends Money {
-    public Franc(int moneyValue) {
+    protected Franc(int moneyValue) {
         super(moneyValue);
     }
 

@@ -7,6 +7,14 @@ public class Money {
         this.moneyValue = moneyValue;
     }
 
+    public static Dollar dollar(int i) {
+        return new Dollar(i);
+    }
+
+    public static Franc franc(int i) {
+        return new Franc(i);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
