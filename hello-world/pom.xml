@@ -17,6 +17,7 @@
         <ratis.version>2.5.2-0f5f95d-SNAPSHOT</ratis.version>
         <commons-cli.version>1.6.0</commons-cli.version>
         <slf4j-log4j12.version>1.7.26</slf4j-log4j12.version>
+        <antlr4-runtime.version>4.7.1</antlr4-runtime.version>
     </properties>
 
 
@@ -77,32 +78,39 @@
             <artifactId>commons-cli</artifactId>
             <version>${commons-cli.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.apache.ratis</groupId>-->
-<!--            <artifactId>ratis-thirdparty-misc</artifactId>-->
-<!--            <version>2.4.1</version>-->
-<!--        </dependency>  <dependency>-->
-<!--            <groupId>org.apache.ratis</groupId>-->
-<!--            <artifactId>ratis-thirdparty-misc</artifactId>-->
-<!--            <version>2.4.1</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.ratis</groupId>-->
-<!--            <artifactId>ratis</artifactId>-->
-<!--            <version>2.4.1</version>-->
-<!--            <type>pom</type>-->
-<!--        </dependency>-->
 
-<!--        <dependency>-->
-<!--            <groupId>org.apache.ratis</groupId>-->
-<!--            <artifactId>ratis</artifactId>-->
-<!--            <version>2.4.1</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <artifactId>ratis-grpc</artifactId>-->
-<!--            <groupId>org.apache.ratis</groupId>-->
-<!--            <version>2.4.1</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr4-runtime</artifactId>
+            <version>${antlr4-runtime.version}</version>
+        </dependency>
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.ratis</groupId>-->
+        <!--            <artifactId>ratis-thirdparty-misc</artifactId>-->
+        <!--            <version>2.4.1</version>-->
+        <!--        </dependency>  <dependency>-->
+        <!--            <groupId>org.apache.ratis</groupId>-->
+        <!--            <artifactId>ratis-thirdparty-misc</artifactId>-->
+        <!--            <version>2.4.1</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.ratis</groupId>-->
+        <!--            <artifactId>ratis</artifactId>-->
+        <!--            <version>2.4.1</version>-->
+        <!--            <type>pom</type>-->
+        <!--        </dependency>-->
+
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.ratis</groupId>-->
+        <!--            <artifactId>ratis</artifactId>-->
+        <!--            <version>2.4.1</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <artifactId>ratis-grpc</artifactId>-->
+        <!--            <groupId>org.apache.ratis</groupId>-->
+        <!--            <version>2.4.1</version>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -118,4 +126,20 @@
         </dependency>
 
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.antlr</groupId>
+                <artifactId>antlr4-maven-plugin</artifactId>
+                <version>4.7.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>antlr4</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
