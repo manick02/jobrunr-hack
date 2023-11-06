@@ -18,10 +18,10 @@ public class MorseCodeAntlrExample {
             Lexer lexer = new morsecodeLexer(CharStreams.fromStream(inputStream));
             TokenStream tokenStream = new CommonTokenStream(lexer);
             Cobol85Parser parser = new Cobol85Parser(tokenStream);
-
         } catch (Exception ex) {
-
             System.out.println("Hello how are you");
         }
     }
+
+
 }
