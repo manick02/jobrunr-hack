@@ -26,6 +26,7 @@ public class SimpleLog {
             byte[] log = byteArrayOutputStream.toByteArray();
             this.output.writeInt(4); // checksum
             this.output.write(log);
+            this.output.flush();
         } finally {
             this.output.close();
         }
