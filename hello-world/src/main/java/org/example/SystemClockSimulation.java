@@ -4,6 +4,8 @@ import java.time.Duration;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 
 public class SystemClockSimulation {
     public static void main(String[] args) {
@@ -13,10 +15,13 @@ public class SystemClockSimulation {
       Duration futureOffset = Duration.ofMinutes(2);
       Duration pastOffset = Duration.ofMinutes(-2);
       Clock future = Clock.offset(clock1, futureOffset);
-        Clock past = Clock.offset(clock1, pastOffset);
-        System.out.println(clock.instant());
-       System.out.println(future.instant());
-        System.out.println(past.instant());
+      Clock past = Clock.offset(clock1, pastOffset);
+      System.out.println(clock.instant());
+      System.out.println(clock.instant().truncatedTo(ChronoUnit.SECONDS));
+      System.out.println(clock.instant().truncatedTo(ChronoUnit.MINUTES));
+      System.out.println(clock.instant().truncatedTo(ChronoUnit.HOURS));
+      System.out.println(future.instant());
+      System.out.println(past.instant());
 //        LocalDateTime now1 = LocalDateTime.now(clock);
 //        System.out.println(now1.toString());
 //        LocalDateTime now = LocalDateTime.now();

@@ -2,6 +2,7 @@ package org.example.atl;
 
 import org.junit.Test;
 
+import java.time.Clock;
 import java.util.AbstractMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -47,6 +48,8 @@ public class FileTest {
         System.out.println(fileCollections2.toString());
         List<AbstractMap.SimpleImmutableEntry<String, File>> fileCollections3 = files.stream().flatMap(x -> x.getCollections().stream().map(v -> new AbstractMap.SimpleImmutableEntry<>(v, x))).collect(Collectors.toList());
         fileCollections3.stream().forEach(System.out::println);
+       // Clock clock = Clock.
+
 
     }
 }
