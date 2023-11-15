@@ -20,7 +20,10 @@ public class SimpleLogTest {
         SimpleLog log = null;
         try {
             log = new SimpleLog(new File("simple.log"));
+            log.close();
         } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
         assertTrue(log!=null);
@@ -33,6 +36,8 @@ public class SimpleLogTest {
             SimpleLog log = new SimpleLog(new File("simple.log"));
             LogData logData = new LogData(Long.MAX_VALUE,"hello world".getBytes(),0);
             log.append(logData);
+            log.append(logData);
+            log.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

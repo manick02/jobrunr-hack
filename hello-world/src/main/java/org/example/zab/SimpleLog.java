@@ -27,8 +27,12 @@ public class SimpleLog {
             this.output.writeInt(4); // checksum
             this.output.write(log);
             this.output.flush();
-        } finally {
+        } catch(IOException e) {
             this.output.close();
         }
+    }
+
+    public void close() throws IOException {
+        this.output.close();
     }
 }
