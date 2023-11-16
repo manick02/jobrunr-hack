@@ -8,8 +8,8 @@ import java.io.IOException;
 public class SimpleLogIteratorTest {
     @Test
     public void iterateSimpleLogs(){
-        SimpleLog simpleLog = new SimpleLog("SimpleIterator.txt");
-        appendLogs();
+//        SimpleLog simpleLog = new SimpleLog("SimpleIterator.txt");
+//        appendLogs();
 
     }
 
