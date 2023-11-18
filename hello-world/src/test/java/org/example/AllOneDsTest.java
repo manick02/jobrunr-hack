@@ -43,7 +43,18 @@ public class AllOneDsTest {
         assertNull(node.prev);
         assertNotNull(after.prev);
         assertNull(after.next);
-        assertEquals(node,node.next.prev);
-        assertEquals(after,after.prev.next);
+        assertEquals(node,after.prev);
+        assertEquals(node.next,after);
+    }
+
+    @Test
+    public void addNodeBefore() {
+        AllOneDs.Node node = new AllOneDs.Node();
+        node.keys.add("Hello");
+        AllOneDs.Node newNode = new AllOneDs.Node();
+        newNode.keys.add("world");
+        AllOneDs.Node.addBefore(node,newNode);
+
+
     }
 }

@@ -24,6 +24,13 @@ public class AllOneDs {
                 temp.prev = newNode;
             }
         }
+
+        public static void addBefore(Node node, Node newNode) {
+           Node prev = node.prev;
+           if (prev == null) {
+
+           }
+        }
     }
 
     private final LinkedHashMap<String, Integer> map = new LinkedHashMap<>(1000, .75f, true);
