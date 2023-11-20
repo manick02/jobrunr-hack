@@ -10,6 +10,8 @@ public class LFUCache {
     private static final int  defaultSize = 100;
     Map<String,Object> map = new HashMap<>();
     Map<String,Integer> keyAccessCount = new HashMap<>();
+
+    TreeMap<Integer,List<String>> countBucket = new TreeMap<>();
     private int size = 0;
     private int currentSize = 0;
 
@@ -31,12 +33,17 @@ public class LFUCache {
 
      map.put(key,value);
      keyAccessCount.put(key,0);
-
+     countBucket.computeIfAbsent(0, x -> new LinkedList<>()).add(key);
     }
 
     private void evictLessFrequentKey() {
-        Map.Entry<String, Integer> min = Collections.min(this.keyAccessCount.entrySet(), Map.Entry.comparingByValue());
-        String key = min.getKey();
+      //  Map.Entry<String, Integer> min = Collections.min(this.keyAccessCount.entrySet(), Map.Entry.comparingByValue());
+      //  String key = min.getKey();
+        Integer count = this.countBucket.firstKey();
+        String key = this.countBucket.get(count).removeFirst();
+        if (this.countBucket.get(count).size() == 0) {
+            this.countBucket.remove(count);
+        }
         this.keyAccessCount.remove(key);
         this.map.remove(key);
     }
@@ -45,7 +52,13 @@ public class LFUCache {
         Integer count = this.keyAccessCount.get(key);
         if (count == null)
             return null;
-        this.keyAccessCount.put(key,count+1);
+        this.countBucket.get(count).remove(key);
+        if (this.countBucket.get(count).size()==0) {
+            this.countBucket.remove(count);
+        }
+        count++;
+        this.keyAccessCount.put(key,count);
+        this.countBucket.computeIfAbsent(count,x->new LinkedList<>()).add(key);
         return map.get(key);
     }
 

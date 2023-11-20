@@ -61,6 +61,7 @@ public class LFUCacheTest {
 
         Object obj3 = new Object();
         cache.put("HelloWorld", obj3);
-        assertNull(cache.get("World")); // assertNull(cache.get("World"))
+        assertNull(cache.get("Hello")); // Hello is evicted // assertNull(cache.get("World"))
+        assertNotNull(cache.get("World")); // worids is not evicted
     }
 }
