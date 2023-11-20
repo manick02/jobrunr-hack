@@ -52,14 +52,18 @@ public class LFUCache {
         Integer count = this.keyAccessCount.get(key);
         if (count == null)
             return null;
-        this.countBucket.get(count).remove(key);
-        if (this.countBucket.get(count).size()==0) {
-            this.countBucket.remove(count);
-        }
+        removeKeyFromCountBucket(key, count);
         count++;
         this.keyAccessCount.put(key,count);
         this.countBucket.computeIfAbsent(count,x->new LinkedList<>()).add(key);
         return map.get(key);
+    }
+
+    private void removeKeyFromCountBucket(String key, Integer count) {
+        this.countBucket.get(count).remove(key);
+        if (this.countBucket.get(count).size()==0) {
+            this.countBucket.remove(count);
+        }
     }
 
 
