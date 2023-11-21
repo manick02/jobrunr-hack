@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.function.Function;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -16,7 +17,6 @@ public class SimpleLogTest {
 
     @Test
     public void simpleLogCreation() {
-
         SimpleLog log = null;
         try {
             log = new SimpleLog(new File("simple.log"));
