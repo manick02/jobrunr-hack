@@ -24,4 +24,15 @@ public class CandidateVoteWithMultiplePreferencesTest {
        assertEquals("C2",collect.get(2).getCandidate());
     }
 
+
+    @Test
+    public void testSummary2() {
+        List<String> vote1 = Arrays.asList("C1", "C2");
+        List<String> vote2 = Arrays.asList("C3", "C2");
+        List<List<String>> cumulativeVote = Arrays.asList(vote1, vote2);
+        List<String> collect = cumulativeVote.stream().flatMap(x -> x.stream()).collect(Collectors.toList());
+
+        System.out.println(collect);
+    }
+
 }
