@@ -18,6 +18,9 @@ public class ReduceStubTest {
 
     @Test
     public void testReduceMinMax(){
-        List<String> list = Arrays.asList("C1","C2")
+        List<Integer> list = Arrays.asList(1,2,3,4,5);
+        int sum = list.stream().reduce(0,(partialsum,element)->partialsum+element);
+        assertEquals(15,sum);
+
     }
 }
