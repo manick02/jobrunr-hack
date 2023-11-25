@@ -1,0 +1,4 @@
+package prototest;
+message Example2Message {
+optional string message = 1;
+}

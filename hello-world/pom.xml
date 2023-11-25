@@ -18,6 +18,8 @@
         <commons-cli.version>1.6.0</commons-cli.version>
         <slf4j-log4j12.version>1.7.26</slf4j-log4j12.version>
         <antlr4-runtime.version>4.7.1</antlr4-runtime.version>
+        <protobuf-java-util.version>3.7.0</protobuf-java-util.version>
+        <protobuf-java.version>3.7.0</protobuf-java.version>
     </properties>
 
 
@@ -84,6 +86,16 @@
             <artifactId>antlr4-runtime</artifactId>
             <version>${antlr4-runtime.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>${protobuf-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java-util</artifactId>
+            <version>${protobuf-java-util.version}</version>
+        </dependency>
 
         <!--        <dependency>-->
         <!--            <groupId>org.apache.ratis</groupId>-->
@@ -127,7 +139,35 @@
 
     </dependencies>
     <build>
+        <extensions>
+            <extension>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>os-maven-plugin</artifactId>
+                <version>1.6.0</version>
+            </extension>
+        </extensions>
+
         <plugins>
+            <plugin>
+                <groupId>org.xolstice.maven.plugins</groupId>
+                <artifactId>protobuf-maven-plugin</artifactId>
+                <version>0.6.1</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <additionalProtoPathElements>
+                        <additionalProtoPathElement>${project.basedir}/src/main/resources</additionalProtoPathElement>
+                    </additionalProtoPathElements>
+                    <protocArtifact>com.google.protobuf:protoc:3.7.0:exe:${os.detected.classifier}</protocArtifact>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.antlr</groupId>
                 <artifactId>antlr4-maven-plugin</artifactId>
