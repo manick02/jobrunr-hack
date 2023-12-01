@@ -41,14 +41,17 @@ public class BloomFilterTest {
     }
 
     @Test
-    public void writeToBloomFilter() throws IOException {
+    public void writeandReadFromFile() throws IOException {
         int expectedInsertion = 10000;
         float falsePositiveTolerance = 0.001f;
         BloomFilter bloomFilter = new BloomFilter(expectedInsertion,falsePositiveTolerance);
         String key = "HelloWorld";
         bloomFilter.add(key.getBytes());
         String fileName = "bloom.filter";
+        assertTrue(bloomFilter.mightContain(key.getBytes()));
         bloomFilter.writeToFile(fileName);
+        BloomFilter bloomFilter2 = BloomFilter.readFromFile(fileName);
+        assertTrue(bloomFilter2.mightContain(key.getBytes()));
 
     }
 }
