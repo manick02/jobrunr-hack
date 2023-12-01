@@ -2,6 +2,8 @@ package org.example.lsm.bloom;
 
 import org.apache.commons.codec.digest.MurmurHash3;
 
+import java.io.*;
+
 import static java.lang.Math.ceil;
 import static java.lang.Math.log;
 
@@ -50,7 +52,15 @@ public class BloomFilter {
         return null;
     }
 
-    public void writeToFile() {
+    public void writeToFile(String fileName) throws IOException {
+        DataOutputStream dao = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(fileName)));
+        dao.write(size);
+        dao.write(hashCount);
+        for(long bit:bits) {
+            dao.writeLong(bit);
+        }
+        dao.flush();
+        dao.close();
 
     }
 }

@@ -2,6 +2,9 @@ package org.example.lsm.bloom;
 
 import org.junit.Test;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BloomFilterTest {
@@ -35,6 +38,17 @@ public class BloomFilterTest {
         boolean mayNotContain = bloomFilter.mightContain("Hello".getBytes());
         assertFalse(mayNotContain);
 
+    }
+
+    @Test
+    public void writeToBloomFilter() throws IOException {
+        int expectedInsertion = 10000;
+        float falsePositiveTolerance = 0.001f;
+        BloomFilter bloomFilter = new BloomFilter(expectedInsertion,falsePositiveTolerance);
+        String key = "HelloWorld";
+        bloomFilter.add(key.getBytes());
+        String fileName = "bloom.filter";
+        bloomFilter.writeToFile(fileName);
 
     }
 }
