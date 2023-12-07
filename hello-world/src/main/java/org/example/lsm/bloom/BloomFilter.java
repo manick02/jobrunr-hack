@@ -25,6 +25,8 @@ public class BloomFilter {
         this.bits = bits;
     }
 
+
+
     public void add(byte[] key) {
 
         long[] hash = getHash(key);
