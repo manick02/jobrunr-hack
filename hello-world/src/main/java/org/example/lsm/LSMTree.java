@@ -13,7 +13,11 @@ public class LSMTree {
         throw new RuntimeException("Not Implemented");
     }
 
-    public byte[] fetch(byte[] key) {
+    public void remove(byte[] key) {
+        throw new RuntimeException("Not Implemented");
+    }
+
+    public byte[] get(byte[] key) {
         throw new RuntimeException("Not Implemented");
     }
 
